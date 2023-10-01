@@ -10,7 +10,6 @@ public class Admin extends AbUser{
     String pos;
 
 
-
     public Admin(Connector connector, int identificator) {
         this.connector = connector;
         id = identificator;

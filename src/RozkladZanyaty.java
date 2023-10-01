@@ -56,10 +56,7 @@ public class RozkladZanyaty {
         comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox comboBox = (JComboBox) e.getSource();
-                Object selected = comboBox.getSelectedItem();
-                selected.toString();
-                saver = selected.toString();
+                saver = connect.combo_crt(e);
             }
         });
         comboBox2.addActionListener(new ActionListener() {
@@ -93,10 +90,7 @@ public class RozkladZanyaty {
         comboBox6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox comboBox = (JComboBox) e.getSource();
-                Object selected = comboBox.getSelectedItem();
-                selected.toString();
-                klas = selected.toString();
+                klas = connect.combo_crt(e);
             }
         });
         comboBox7.addActionListener(new ActionListener() {
