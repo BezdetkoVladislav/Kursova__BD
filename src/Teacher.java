@@ -79,31 +79,7 @@ public class Teacher extends AbUser{
         return null;
     }
 
-    protected DefaultTableModel get_oz_pred(String pr) {
-        String sql = "call school.oz_all_predm(?,?);";
-        try {
-            connector.preparedStatement = connector.connector.prepareStatement(sql);
-            connector.preparedStatement.setInt(1,0);
-            connector.preparedStatement.setString(2,pr);
-            connector.results = connector.preparedStatement.executeQuery();
-            return connector.model_create();
-        } catch (Exception w) {
-        }
-        return null;
-    }
-    protected DefaultTableModel get_oz_bm(String pr,int oz) {
-        String sql = "call school.oz_all_bm(?,?,?);";
-        try {
-            connector.preparedStatement = connector.connector.prepareStatement(sql);
-            connector.preparedStatement.setInt(1,0);
-            connector.preparedStatement.setString(2,pr);
-            connector.preparedStatement.setInt(3,oz);
-            connector.results = connector.preparedStatement.executeQuery();
-            return connector.model_create();
-        } catch (Exception w) {
-        }
-        return null;
-    }
+
     protected DefaultTableModel get_oz_sers() {
         String sql = "call school.get_sers();";
         try {
@@ -136,18 +112,6 @@ public class Teacher extends AbUser{
             connector.preparedStatement.setString(3,c);
             connector.preparedStatement.setInt(4,d);
             connector.preparedStatement.setInt(5,old);
-            connector.preparedStatement.execute();
-        } catch (Exception w) {
-            System.out.println(w);
-        }
-    }
-    protected void addt(String a, String b, int d) {
-        String sql = "call school.add_tab(?,?,?)";
-        try {
-            connector.preparedStatement = connector.connector.prepareStatement(sql);
-            connector.preparedStatement.setString(1,b);
-            connector.preparedStatement.setString(2,a);;
-            connector.preparedStatement.setInt(3,d);
             connector.preparedStatement.execute();
         } catch (Exception w) {
             System.out.println(w);

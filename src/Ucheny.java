@@ -90,34 +90,7 @@ public class Ucheny extends AbUser{
         }
         return null;
     }
-    protected DefaultTableModel get_oz_pred(String pr) {
-        String sql = "call school.oz_all_predm(?,?);";
-        try {
-            System.out.println(this.id);
-            connector.preparedStatement = connector.connector.prepareStatement(sql);
-            connector.preparedStatement.setInt(1,this.id);
-            connector.preparedStatement.setString(2,pr);
-            connector.results = connector.preparedStatement.executeQuery();
-            return connector.model_create();
-        } catch (Exception w) {
-            System.out.println(w);
-        }
-        return null;
-    }
-    protected DefaultTableModel get_oz_bm(String pr,int oz) {
-        String sql = "call school.oz_all_bm(?,?,?);";
-        try {
-            connector.preparedStatement = connector.connector.prepareStatement(sql);
-            connector.preparedStatement.setInt(1,this.id);
-            connector.preparedStatement.setString(2,pr);
-            connector.preparedStatement.setInt(3,oz);
-            connector.results = connector.preparedStatement.executeQuery();
-            return connector.model_create();
-        } catch (Exception w) {
-            System.out.println(w);
-        }
-        return null;
-    }
+
 
 
 }

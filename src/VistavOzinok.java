@@ -19,8 +19,26 @@ public class VistavOzinok  {
     int listnum;
     JFrame fram;
     String saver,baver,uch,tyu;
-           int old;
+    int old;
 
+    public Exception addt(String a, String b, int d) {
+        String sql = "call school.add_tab(?,?,?)";
+        if(d>0 && d<12){
+        try {
+            ac.connector.preparedStatement = ac.connector.connector.prepareStatement(sql);
+            ac.connector.preparedStatement.setString(1,b);
+            ac.connector.preparedStatement.setString(2,a);;
+            ac.connector.preparedStatement.setInt(3,d);
+            ac.connector.preparedStatement.execute();
+            return null;
+        } catch (Exception w) {
+            System.out.println(w);
+            return w;
+        }} else{
+            try{throw new NullPointerException();}catch(Exception w){
+            return w;}
+        }
+    }
 
     protected VistavOzinok(Connector connect, CardLayout cardLayout, JFrame fram){
        this.fram=fram;
@@ -102,7 +120,7 @@ public class VistavOzinok  {
                     spinner1.commitEdit();} catch (Exception es){}
                 int value = (Integer)spinner1.getValue();
                 if(!saver.isEmpty() && !baver.isEmpty() && !uch.isEmpty() && value<13 && value>0){
-                    ac.addt(baver,uch,value);
+                    addt(baver,uch,value);
                     comboBox3 = connect.getcombo4(comboBox3,baver,uch);
                     comboBox5 = connect.getcombo5(comboBox5,uch,baver,tyu);
                 }
@@ -119,4 +137,5 @@ public class VistavOzinok  {
         fram.revalidate();
         fram.repaint();
     }
+
 }

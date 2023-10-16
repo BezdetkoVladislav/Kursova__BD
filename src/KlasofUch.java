@@ -140,16 +140,19 @@ public class KlasofUch  {
         } catch (Exception w){}
         return null;
     }
-    void prod(String str){
+    Exception prod(String str){
         String sql = "call school.onovutu(?,?,?);";
+
         try{
             connector.preparedStatement =  connector.connector.prepareStatement(sql);
             connector.preparedStatement.setInt(1,Integer.parseInt(h1));
             connector.preparedStatement.setInt(2,Integer.parseInt(h2));
             connector.preparedStatement.setString(3,str);
             connector.preparedStatement.execute();
+            return null;
         } catch (Exception sda){
             System.out.println(sda);
+            return sda;
         }
     }
 }
