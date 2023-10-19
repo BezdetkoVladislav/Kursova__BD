@@ -18,7 +18,8 @@ public class TchMenu extends Menu {
     @Override
     public void inf_setter(){
         this.pib.setText(this.acc.pib);
-        this.kat.setText(this.acc.kat);
+        String txt =Integer.toString(this.acc.kat);
+        this.kat.setText(txt);
         this.spec.setText(this.acc.spec);
     }
     @Override

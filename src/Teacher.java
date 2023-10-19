@@ -4,17 +4,51 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.text.SimpleDateFormat;
 public class Teacher extends AbUser{
+    public String getPib() {
+        return pib;
+    }
+
+    public void setPib(String pib) {
+        this.pib = pib;
+    }
+
+    public String getSpec() {
+        return spec;
+    }
+
+    public void setSpec(String spec) {
+        this.spec = spec;
+    }
+
+    public int getKat() {
+        return kat;
+    }
+
+    public void setKat(int kat) {
+        this.kat = kat;
+    }
+
     String pib;
     String spec;
-    String kat;
+    int kat;
     int pr_id;
     int x=0;
+
+    public String getDat() {
+        return dat;
+    }
+
+    public void setDat(String dat) {
+        this.dat = dat;
+    }
+
+    String dat;
 
 
     public Teacher(Connector connector,int identificator){
         this.connector = connector;
         id = identificator;
-        get_data();
+
     }
     private void get_data() {
         String sql = "call school.teach_data(?,?,?,?,?);";
@@ -28,7 +62,7 @@ public class Teacher extends AbUser{
             connector.callableStatement.execute();
             pib =connector.callableStatement.getString(2);
             spec =connector.callableStatement.getString(3);
-            kat =connector.callableStatement.getString(4);
+            kat =connector.callableStatement.getInt(4);
             pr_id = connector.callableStatement.getInt(5);
         }catch (Exception ss) {
             System.out.println(ss);
