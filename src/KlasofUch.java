@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class KlasofUch  {
-    private JTable table1;
+     JTable table1;
     private JButton назадButton;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
@@ -69,7 +69,7 @@ public class KlasofUch  {
         });
     }
 
-    void chcklist(){
+    String chcklist(){
         if(listnum== 1){
             name.setText("Співробітники");
             vykl.setVisible(false);
@@ -77,6 +77,7 @@ public class KlasofUch  {
             try {
                 table1.setModel(a.get_table(listnum));
             } catch (Exception e){}
+            return "Список співробітників";
         } else if (listnum==2) {
             name.setText("Вчителі");
             vykl.setVisible(true);
@@ -88,6 +89,7 @@ public class KlasofUch  {
             try {
                 table1.setModel(a.get_table(listnum));
             } catch (Exception e){}
+            return "Список вчителів";
         } else if (listnum==3) {
             name.setText("Учні");
             vykl.setVisible(false);
@@ -95,6 +97,7 @@ public class KlasofUch  {
             try {
                 table1.setModel(a.get_table(listnum));
             } catch (Exception e){}
+            return "Список усіх учнів";
         } else if (listnum==4) {
             name.setText("Учні");
             vykl.setVisible(false);
@@ -102,6 +105,7 @@ public class KlasofUch  {
             try {
                 table1.setModel(ac.get_table());
             } catch (Exception e){}
+            return "Список учнів дисципліни";
         } else if (listnum==5) {
             name.setText(acc.klass);
             vykl.setVisible(false);
@@ -109,9 +113,11 @@ public class KlasofUch  {
             try {
                 table1.setModel(acc.get_table());
             } catch (Exception e){}
+            return "Список однокласників";
         }
         fram.revalidate();
         fram.repaint();
+        return "Такого типу списку не існує";
     }
 
     ComboBoxModel setbox(){

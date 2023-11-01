@@ -18,6 +18,31 @@ public class Register {
     int id;
     CardLayout cardLayout = new CardLayout();
 
+    protected String usr_method(Connector connect){
+
+            if(position!=null && position.equals("Учень")){
+                UchMenu um = new UchMenu(connect, cardLayout,frame);
+                um.acc_objct(frame,cardLayout,connect,id);
+                um.inf_setter();
+                return "Учень";
+            } else if (position!=null  && position.equals("Вчитель")) {
+                TchMenu tm = new TchMenu(connect, cardLayout,frame);
+                tm.acc_objct(frame,cardLayout,connect,id);
+                tm.inf_setter();
+                return "Вчитель";
+            } else if (position!=null  && position.equals("Адміністратор")) {
+                AdminPan ap = new AdminPan(connect, cardLayout,frame);
+                frame.add(ap.pan,"adm");
+                ap.acc_objct(frame,cardLayout,connect,id);
+                ap.inf_setter();
+                return "Адміністратор";
+            } else {
+                JOptionPane.showMessageDialog(null, "Обов'язкове поле пусте!");
+                return "Обов'язкове поле пусте!";
+            }
+
+    }
+
     protected Register(Connector connect){
 
         frame.setLayout(cardLayout);
@@ -27,27 +52,12 @@ public class Register {
                 public void actionPerformed(ActionEvent e) {
                     if (!textField1.getText().isEmpty() && !textField2.getText().isEmpty()){
                         try {
-                           id = connect.chck_user(textField2.getText(), textField1.getText());
-                           position = connect.position;
+                            id = connect.chck_user(textField2.getText(), textField1.getText());
+                            position = connect.position;
                         } catch (Exception eee) {
                         }
                         System.out.println(position);
-                        if(position!=null && position.equals("Учень")){
-                            UchMenu um = new UchMenu(connect, cardLayout,frame);
-                            um.acc_objct(frame,cardLayout,connect,id);
-                            um.inf_setter();
-                        } else if (position!=null  && position.equals("Вчитель")) {
-                            TchMenu tm = new TchMenu(connect, cardLayout,frame);
-                            tm.acc_objct(frame,cardLayout,connect,id);
-                            tm.inf_setter();
-                        } else if (position!=null  && position.equals("Адміністратор")) {
-                            AdminPan ap = new AdminPan(connect, cardLayout,frame);
-                            frame.add(ap.pan,"adm");
-                            ap.acc_objct(frame,cardLayout,connect,id);
-                            ap.inf_setter();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Account data is corrupted!");
-                        }
+                        usr_method(connect);
                     } else {
                         JOptionPane.showMessageDialog(null, "Обов'язкове поле пусте!");
                     }

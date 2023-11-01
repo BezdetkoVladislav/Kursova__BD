@@ -21,6 +21,7 @@ public class UchMenu extends Menu {
         this.pib.setText(this.acc.pib);
         this.ball.setText(String.valueOf(this.acc.avg_mark));
         this.date.setText(this.acc.date);
+        this.acc.har = this.acc.har+this.acc.check_mark();
         this.har.setText(this.acc.har);
     }
     @Override

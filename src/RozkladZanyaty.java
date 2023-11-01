@@ -132,7 +132,7 @@ public class RozkladZanyaty {
         });
     }
 
-    int chcklist() {
+    String chcklist() {
         if(listnum==1){
             kl.setVisible(true);
             set.setVisible(true);
@@ -157,7 +157,7 @@ public class RozkladZanyaty {
                 table4.setModel(a.get_roz_table(5));
                 table5.setModel(a.get_roz_table(6));
             } catch (Exception e){}
-            return 1;
+            return "Розклад адміністратора";
         } else if(listnum==2){
             kl.setVisible(false);
             set.setVisible(true);
@@ -169,7 +169,7 @@ public class RozkladZanyaty {
                 table4.setModel(ac.get_roz_table(5));
                 table5.setModel(ac.get_roz_table(6));
             } catch (Exception e){}
-            return 2;
+            return "Розклад вчителів";
         } else if(listnum==3){
             kl.setVisible(false);
             set.setVisible(false);
@@ -181,11 +181,10 @@ public class RozkladZanyaty {
                 table4.setModel(acc.get_roz_table(5));
                 table5.setModel(acc.get_roz_table(6));
             } catch (Exception e){}
-            return 3;
+            return "Розклад учнів";
+        } else {
+            return "Недопустиме значення ідентифікатору списку";
         }
-        fram.revalidate();
-        fram.repaint();
-        return 0;
     }
     DefaultTableModel get_roz_table_acc(int date){
         String sql = "call school.date_week_pred_ok(?,?)";

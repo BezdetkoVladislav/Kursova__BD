@@ -43,6 +43,18 @@ public class Ucheny extends AbUser{
             System.out.println(ss);
         }
     }
+    protected String check_mark(){
+        if(avg_mark==0){
+            return "На поточний момент оцінки відсутні.";
+        } else if (avg_mark<=4) {
+            return "Незадовільний рівень успішності.";
+        } else if (avg_mark<=8) {
+            return "Достатній рівень успішності.";
+        } else if (avg_mark<=12) {
+            return "Високий рівень успішності.";
+        }
+        return "Зверніться до адміністратора щодо стану відомостей.";
+    }
     protected DefaultTableModel get_table() throws SQLException {
         String sql = "call school.getkluch(?)";
         try {
@@ -68,17 +80,6 @@ public class Ucheny extends AbUser{
         return null;
     }
 
-    protected DefaultTableModel get_oz(){
-        String sql = "call school.oz_all(?)";
-        try {
-            connector.preparedStatement = connector.connector.prepareStatement(sql);
-            connector.preparedStatement.setInt(1,this.id);
-            connector.results = connector.preparedStatement.executeQuery();
-            return connector.model_create();
-        } catch (Exception w) {
-        }
-        return null;
-    }
     protected DefaultTableModel get_oz_week() {
         String sql = "call school.oz_all_week(?);";
         try {
