@@ -44,17 +44,20 @@ public class Ucheny extends AbUser{
         }
     }
     protected String check_mark(){
-        if(avg_mark==0){
+        if(avg_mark<0 || avg_mark>12){
+            return "Зверніться до адміністратора щодо стану відомостей.";
+        } else if (avg_mark==0){
             return "На поточний момент оцінки відсутні.";
         } else if (avg_mark<=4) {
             return "Незадовільний рівень успішності.";
         } else if (avg_mark<=8) {
             return "Достатній рівень успішності.";
-        } else if (avg_mark<=12) {
+        } else {
             return "Високий рівень успішності.";
         }
-        return "Зверніться до адміністратора щодо стану відомостей.";
     }
+
+
     protected DefaultTableModel get_table() throws SQLException {
         String sql = "call school.getkluch(?)";
         try {
